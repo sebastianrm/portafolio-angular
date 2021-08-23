@@ -1,11 +1,6 @@
-FROM ruby:2.4-alpine
-RUN apk update && apk add build-base nodejs tzdata
+FROM nginx:1.17.1-alpine
 
-RUN mkdir /app
-WORKDIR /app
+EXPOSE 8082
 
-COPY Gemfile Gemfile.lock ./
-RUN gem install bundler
-RUN bundle install --binstubs
-
-COPY . .
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY /dist/portafolio-angular /usr/share/nginx/html
