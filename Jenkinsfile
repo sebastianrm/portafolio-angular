@@ -4,13 +4,8 @@ pipeline {
 
     stages {
 
-        stage('Prepare Angular CLI') { // install global angular cli
-            sh 'npm -g install @angular/cli'
-            sh 'ng --version'
-        }
-
         stage('Build') { // prepare angular demo app
-            sh 'npm run build'
+            sh 'npm install'
         }
 
         stage('Build PROD') { // prepare angular demo app
