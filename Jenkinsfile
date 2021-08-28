@@ -9,7 +9,7 @@ node {
        sh "ng build --prod"
      }
    }
-   stage('Deploy Docker'') {
+   stage('Deploy Docker') {
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
        sh "docker-compose up"
      }
