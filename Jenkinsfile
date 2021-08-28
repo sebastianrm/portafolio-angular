@@ -10,11 +10,12 @@ pipeline {
                 }
             }
         }
-   stage('Deploy Docker') {
-       steps {
-            docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                 sh "docker-compose up"
-            }
-       }
+    stage('Deploy Docker') {
+        steps {
+                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                    sh "docker-compose up"
+                }
+        }
+        }
     }
 }
