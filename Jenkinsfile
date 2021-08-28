@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
-                    sh 'npm install'
-                    sh 'ng build --prod'
+                    sh "npm install"
+                    sh "ng build --prod"
                 }
             }
         }
