@@ -12,10 +12,8 @@ pipeline {
         }
     stage('Deploy Docker') {
         steps {
-                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                     sh "docker-compose up"
-                }
-        }
+            }
         }
     }
 }
