@@ -1,19 +1,17 @@
-pipeline {
-
-    agent any
-
-    stages {
-
-        stage('Build') { // prepare angular demo app
-            sh 'npm install'
-        }
-
-        stage('Build PROD') { // prepare angular demo app
-            sh 'ng build --prod'
-        }
-
-        stage('Depoy Docker') { // prepare angular demo app
-            sh 'docker-compose up'
-        }
-    }
+node {
+   def commit_id
+   stage('Build') {
+     checkout scm
+     sh "npm install"                        
+   }
+   stage('Build PROD') {
+     nodejs(nodeJSInstallationName: 'nodejs') {
+       sh "ng build --prod"
+     }
+   }
+   stage('Deploy Docker'') {
+     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+       sh "docker-compose up"
+     }
+   }
 }
