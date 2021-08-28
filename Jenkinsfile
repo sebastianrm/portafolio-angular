@@ -8,10 +8,10 @@ pipeline {
                     sh "ng build --prod"
                 }
         }
-    stage('Deploy Docker') {
-        steps {
-                    sh "docker-compose up"
+        stage('Deploy Docker') {
+            steps {
+                        sh "docker-compose up"
+                }
             }
-        }
     }
 }
