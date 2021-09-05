@@ -2,32 +2,31 @@ pipeline {
     agent any
 
     stages {
-        stage('develop') {
+        stage('main') {
             when {
-                branch 'dev'
+                branch 'main'
             }
             steps {
-                echo 'develop branch'
+                echo 'MAIN branch'
             }
         }
-        stage('QA') {
+        stage('qa') {
             when {
-                branch 'QA'
+                branch 'qa'
             }
             steps {
-                echo 'develop branch'
+                echo 'qa branch'
             }
         }
-        stage('production') {
+        stage('prod') {
             when {
                 branch 'prod'
             }
 
             steps {
-                echo 'develop branch'
+                echo 'prod branch'
         stage('Build') {
             steps {
-                    echo 'Pulling...' + env.BRANCH_NAME
                     sh "npm install"
                     sh "ng build --prod"
                 }
