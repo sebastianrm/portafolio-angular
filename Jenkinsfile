@@ -4,10 +4,10 @@ pipeline {
     stages {
         stage('main') {
             when {
-                branch 'main'
+            branch 'main'
             }
             steps {
-                echo 'MAIN branch'
+            echo 'MAIN branch'
             }
         }
         stage('qa') {
@@ -22,20 +22,15 @@ pipeline {
             when {
                 branch 'prod'
             }
-
             steps {
                 echo 'prod branch'
-        stage('Build') {
-            steps {
-                    sh "npm install"
-                    sh "ng build --prod"
-                }
-        }
-        stage('Deploy Docker') {
-            steps {
-                        sh "docker-compose up -d"
-                }
-            }
+
+                echo 'Buils Steps .....'
+                sh "npm install"
+                sh "ng build --prod"
+
+                echo 'Deploy Docker Steps .....'
+                sh "docker-compose up -d"
             }
         }
     }
