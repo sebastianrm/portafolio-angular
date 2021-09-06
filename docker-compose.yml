@@ -2,5 +2,6 @@ version: '3.3'
 services:
   portafolio-angular:
     build: .
+    image: srm/portafolio-angular
     ports:
     - "8082:8082"
