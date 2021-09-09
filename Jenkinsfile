@@ -2,15 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('clean') {
-
-            steps {
-            echo 'Limpia directorio de trabajo'
-            deleteDir() /* clean up our workspace */
-            }
-            
-        }
-
         stage('main') {
             when {
             branch 'main'
